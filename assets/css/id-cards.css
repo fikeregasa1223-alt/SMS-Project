@@ -1,0 +1,67 @@
+.id-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+}
+.id-card {
+    background: #fff;
+    border: 1px solid var(--sms-border);
+    border-radius: 12px;
+    padding: 1rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--sms-shadow-sm);
+    font-size: .8125rem;
+}
+.id-card::before {
+    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px;
+    background: linear-gradient(90deg, var(--sms-primary), #7c3aed);
+}
+.id-header {
+    display: flex; gap: .5rem; align-items: center; justify-content: center;
+    margin-bottom: .5rem;
+    padding-top: .25rem;
+}
+.id-logo {
+    width: 30px; height: 30px;
+    border-radius: 8px;
+    background: var(--sms-primary);
+    color: #fff;
+    display: grid; place-items: center;
+    font-weight: 800;
+}
+.id-school { font-weight: 700; font-size: .75rem; text-align: left; }
+.id-type { font-size: .65rem; color: var(--sms-text-muted); text-align: left; text-transform: uppercase; letter-spacing: .08em; }
+.id-photo {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    margin: .5rem auto;
+    background: var(--sms-primary-soft);
+    color: var(--sms-primary);
+    display: grid; place-items: center;
+    font-weight: 800;
+    font-size: 1.5rem;
+    overflow: hidden;
+    border: 3px solid #fff;
+    box-shadow: 0 0 0 2px var(--sms-primary-soft);
+}
+.id-photo img { width: 100%; height: 100%; object-fit: cover; }
+.id-name { font-weight: 700; margin-top: .35rem; font-size: .9rem; }
+.id-code { font-size: .75rem; color: var(--sms-text-muted); letter-spacing: .05em; }
+.id-meta {
+    display: flex; gap: .35rem; justify-content: center; margin-top: .5rem;
+}
+.id-meta span {
+    background: var(--sms-primary-soft); color: var(--sms-primary);
+    padding: 2px 8px; border-radius: 999px;
+    font-size: .7rem; font-weight: 600;
+}
+.id-qr { margin-top: .65rem; }
+.id-qr img { width: 60px; height: 60px; }
+
+@media print {
+    .sidebar, .topbar, footer, .page-header, .filter-bar, .btn { display: none !important; }
+    .id-grid { grid-template-columns: repeat(3, 1fr); }
+    .id-card { box-shadow: none; break-inside: avoid; }
+}

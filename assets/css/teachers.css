@@ -1,0 +1,85 @@
+/* ==========================================================================
+   SMS - Teachers module styles
+   ========================================================================== */
+
+/* Reuse student card layout */
+.teacher-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+}
+
+.teacher-card {
+    background: var(--sms-surface);
+    border: 1px solid var(--sms-border);
+    border-radius: var(--sms-radius);
+    padding: 1rem;
+    display: flex;
+    gap: .85rem;
+    align-items: flex-start;
+    transition: all .15s ease;
+}
+.teacher-card:hover {
+    box-shadow: var(--sms-shadow);
+    transform: translateY(-2px);
+}
+
+.teacher-card .photo {
+    width: 60px; height: 60px;
+    border-radius: 12px;
+    background: var(--sms-primary-soft);
+    color: var(--sms-primary);
+    display: grid; place-items: center;
+    font-weight: 700;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.teacher-card .photo img { width: 100%; height: 100%; object-fit: cover; }
+.teacher-card .info { min-width: 0; flex: 1; }
+.teacher-card .name { font-weight: 600; margin: 0 0 .15rem; font-size: .9rem; }
+.teacher-card .meta { font-size: .75rem; color: var(--sms-text-muted); }
+
+/* Assignment chip */
+.assignment-chip {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    padding: .7rem 1rem;
+    border: 1px solid var(--sms-border);
+    border-radius: 10px;
+    background: var(--sms-surface);
+    font-size: .875rem;
+}
+.assignment-chip .subject {
+    font-weight: 600;
+    color: var(--sms-text);
+}
+.assignment-chip .class-meta {
+    color: var(--sms-text-muted);
+    font-size: .8125rem;
+}
+
+/* Stat mini grid (teacher profile) */
+.mini-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: .75rem;
+}
+.mini-stat {
+    padding: .85rem 1rem;
+    background: var(--sms-surface);
+    border: 1px solid var(--sms-border);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.mini-stat .v {
+    font-size: 1.35rem;
+    font-weight: 700;
+    line-height: 1.1;
+}
+.mini-stat .l {
+    font-size: .75rem;
+    color: var(--sms-text-muted);
+    margin-top: 2px;
+}

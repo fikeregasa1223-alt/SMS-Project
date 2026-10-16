@@ -1,0 +1,112 @@
+/* ==========================================================================
+   SMS - Administration module styles
+   ========================================================================== */
+
+/* Settings sections */
+.settings-nav {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+    position: sticky;
+    top: 80px;
+}
+.settings-nav .link {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    padding: .6rem .85rem;
+    border-radius: 8px;
+    color: var(--sms-text-soft);
+    text-decoration: none;
+    font-size: .875rem;
+    font-weight: 500;
+}
+.settings-nav .link:hover { background: var(--sms-primary-soft); color: var(--sms-primary); }
+.settings-nav .link.active { background: var(--sms-primary); color: #fff; }
+
+/* Logo preview */
+.logo-preview {
+    width: 140px; height: 140px;
+    border-radius: 16px;
+    background: var(--sms-bg);
+    border: 2px dashed var(--sms-border);
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color .15s ease;
+    position: relative;
+}
+.logo-preview:hover { border-color: var(--sms-primary); }
+.logo-preview img { width: 100%; height: 100%; object-fit: contain; padding: 12px; background: #fff; }
+.logo-preview .placeholder { color: var(--sms-text-muted); font-size: 2rem; }
+.logo-preview .hint {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: rgba(15,23,42,.7);
+    color: #fff;
+    font-size: .7rem;
+    text-align: center;
+    padding: 4px;
+    opacity: 0;
+    transition: opacity .15s ease;
+}
+.logo-preview:hover .hint { opacity: 1; }
+
+/* Permissions matrix */
+.perm-group {
+    background: var(--sms-surface);
+    border: 1px solid var(--sms-border);
+    border-radius: 10px;
+    padding: 1rem 1.1rem;
+    margin-bottom: .75rem;
+}
+.perm-group h6 {
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    font-size: .7rem;
+    color: var(--sms-text-muted);
+    margin: 0 0 .65rem;
+}
+.perm-row {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .35rem 0;
+    border-bottom: 1px dashed var(--sms-border);
+    font-size: .85rem;
+}
+.perm-row:last-child { border-bottom: 0; }
+.perm-row label { cursor: pointer; flex-grow: 1; margin: 0; }
+.perm-row .form-check-input { cursor: pointer; }
+
+/* Role badge */
+.role-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    padding: .3rem .7rem;
+    border-radius: 999px;
+    font-size: .75rem;
+    font-weight: 600;
+}
+.role-pill.admin   { background: rgba(79,70,229,.15); color: var(--sms-primary-700); }
+.role-pill.teacher { background: rgba(16,185,129,.15); color: #047857; }
+.role-pill.student { background: rgba(6,182,212,.15); color: #155e75; }
+.role-pill.parent  { background: rgba(245,158,11,.15); color: #92400e; }
+
+/* Audit log row */
+.audit-action {
+    font-family: 'Menlo', 'Consolas', monospace;
+    font-size: .8125rem;
+    background: var(--sms-bg);
+    padding: 2px 8px;
+    border-radius: 4px;
+    color: var(--sms-primary-700);
+    font-weight: 600;
+}
+.audit-entity {
+    font-family: 'Menlo', 'Consolas', monospace;
+    font-size: .78rem;
+    color: var(--sms-text-muted);
+}

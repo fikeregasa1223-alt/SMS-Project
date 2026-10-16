@@ -1,0 +1,126 @@
+/* ==========================================================================
+   SMS - Announcements styles
+   ========================================================================== */
+
+.ann-list { display: flex; flex-direction: column; gap: .75rem; }
+
+.ann-card {
+    background: var(--sms-surface);
+    border: 1px solid var(--sms-border);
+    border-left: 4px solid var(--sms-border);
+    border-radius: var(--sms-radius);
+    padding: 1rem 1.1rem;
+    transition: all .15s ease;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+.ann-card:hover {
+    box-shadow: var(--sms-shadow-sm);
+    transform: translateY(-1px);
+    text-decoration: none;
+    color: inherit;
+}
+.ann-card.priority-low     { border-left-color: var(--sms-secondary); }
+.ann-card.priority-normal  { border-left-color: var(--sms-info); }
+.ann-card.priority-high    { border-left-color: var(--sms-warning); }
+.ann-card.priority-urgent  { border-left-color: var(--sms-danger); }
+
+.ann-card.unread {
+    background: linear-gradient(to right, rgba(79,70,229,.04), transparent 40%);
+}
+
+.ann-card .header {
+    display: flex;
+    gap: .5rem;
+    align-items: flex-start;
+    margin-bottom: .5rem;
+}
+.ann-card .title {
+    font-weight: 700;
+    font-size: 1rem;
+    margin: 0;
+    color: var(--sms-text);
+    line-height: 1.3;
+}
+.ann-card .meta {
+    display: flex;
+    gap: .75rem;
+    flex-wrap: wrap;
+    font-size: .75rem;
+    color: var(--sms-text-muted);
+    margin-top: 4px;
+}
+.ann-card .meta span { display: inline-flex; align-items: center; gap: .25rem; }
+.ann-card .excerpt {
+    font-size: .875rem;
+    color: var(--sms-text-soft);
+    margin: .5rem 0 0;
+    line-height: 1.5;
+}
+
+.ann-badges {
+    display: flex;
+    gap: .35rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* Detail */
+.ann-detail {
+    background: var(--sms-surface);
+    border: 1px solid var(--sms-border);
+    border-radius: var(--sms-radius);
+    padding: 1.5rem;
+}
+.ann-detail h1 { font-size: 1.4rem; margin: 0 0 .5rem; }
+.ann-detail .content {
+    margin-top: 1rem;
+    font-size: .9375rem;
+    line-height: 1.7;
+    color: var(--sms-text-soft);
+    white-space: pre-wrap;
+}
+
+/* Notice banner on dashboards */
+.ann-banner {
+    display: flex;
+    gap: .75rem;
+    padding: .85rem 1rem;
+    border-radius: 10px;
+    align-items: flex-start;
+    background: var(--sms-primary-soft);
+    border: 1px solid rgba(79,70,229,.15);
+    margin-bottom: .75rem;
+}
+.ann-banner.urgent { background: rgba(239,68,68,.08); border-color: rgba(239,68,68,.2); }
+.ann-banner.high   { background: rgba(245,158,11,.08); border-color: rgba(245,158,11,.2); }
+.ann-banner .icon {
+    width: 34px; height: 34px;
+    border-radius: 8px;
+    display: grid; place-items: center;
+    background: rgba(79,70,229,.15);
+    color: var(--sms-primary);
+    flex-shrink: 0;
+}
+.ann-banner.urgent .icon { background: rgba(239,68,68,.15); color: var(--sms-danger); }
+.ann-banner.high   .icon { background: rgba(245,158,11,.15); color: #b45309; }
+
+/* Report cards (for reports module) */
+.report-header {
+    background: var(--sms-surface);
+    border: 1px solid var(--sms-border);
+    border-radius: var(--sms-radius);
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+}
+.report-header h1 { margin: 0 0 .25rem; font-size: 1.3rem; }
+.report-header .meta { font-size: .8125rem; color: var(--sms-text-muted); }
+
+/* Print */
+@media print {
+    .sidebar, .topbar, footer, .btn, .no-print, .page-actions { display: none !important; }
+    .main { margin: 0 !important; }
+    .page-content { padding: 0 !important; }
+    .card { box-shadow: none !important; }
+}

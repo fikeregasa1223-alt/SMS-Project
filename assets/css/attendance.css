@@ -1,0 +1,160 @@
+/* ==========================================================================
+   SMS - Attendance module styles
+   ========================================================================== */
+
+/* Quick mark toolbar */
+.att-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: .75rem 1rem;
+    background: var(--sms-surface);
+    border: 1px solid var(--sms-border);
+    border-radius: var(--sms-radius);
+}
+.att-toolbar .title {
+    font-weight: 600;
+    font-size: .9rem;
+    margin-right: auto;
+}
+.att-toolbar .btn { padding: .4rem .8rem; font-size: .8125rem; }
+
+/* Attendance student list */
+.att-list {
+    background: var(--sms-surface);
+    border: 1px solid var(--sms-border);
+    border-radius: var(--sms-radius);
+    overflow: hidden;
+}
+.att-row {
+    display: flex;
+    align-items: center;
+    gap: .85rem;
+    padding: .75rem 1rem;
+    border-bottom: 1px solid var(--sms-border);
+    transition: background .15s ease;
+}
+.att-row:last-child { border-bottom: 0; }
+.att-row:hover { background: rgba(79,70,229,.03); }
+
+.att-row .info {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    min-width: 0;
+    flex: 1;
+}
+.att-row .name {
+    font-weight: 600;
+    font-size: .875rem;
+    line-height: 1.2;
+}
+.att-row .meta {
+    font-size: .75rem;
+    color: var(--sms-text-muted);
+}
+
+/* Status segmented buttons */
+.att-status-group {
+    display: inline-flex;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--sms-border);
+    flex-shrink: 0;
+}
+.att-status-group input[type="radio"] { display: none; }
+.att-status-group label {
+    padding: .4rem .7rem;
+    font-size: .75rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--sms-text-soft);
+    background: var(--sms-surface);
+    border-right: 1px solid var(--sms-border);
+    transition: all .15s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: .25rem;
+    margin: 0;
+}
+.att-status-group label:last-child { border-right: 0; }
+.att-status-group label:hover { background: var(--sms-primary-soft); color: var(--sms-primary); }
+
+.att-status-group input[value="present"]:checked + label { background: var(--sms-success); color: #fff; }
+.att-status-group input[value="absent"]:checked  + label { background: var(--sms-danger);  color: #fff; }
+.att-status-group input[value="late"]:checked    + label { background: var(--sms-warning); color: #fff; }
+.att-status-group input[value="excused"]:checked + label { background: var(--sms-info);    color: #fff; }
+
+/* Summary chips */
+.att-summary {
+    display: flex;
+    gap: .5rem;
+    flex-wrap: wrap;
+}
+.att-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    padding: .35rem .65rem;
+    border-radius: 8px;
+    font-size: .75rem;
+    font-weight: 600;
+    border: 1px solid var(--sms-border);
+    background: var(--sms-surface);
+}
+.att-chip.present { color: var(--sms-success); border-color: rgba(16,185,129,.3); }
+.att-chip.absent  { color: var(--sms-danger);  border-color: rgba(239,68,68,.3); }
+.att-chip.late    { color: var(--sms-warning); border-color: rgba(245,158,11,.3); }
+.att-chip.excused { color: var(--sms-info);    border-color: rgba(6,182,212,.3); }
+
+/* Percentage bar */
+.pct-bar {
+    height: 6px;
+    background: var(--sms-border);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-top: 4px;
+}
+.pct-bar > span {
+    display: block;
+    height: 100%;
+    background: var(--sms-success);
+    border-radius: 3px;
+    transition: width .3s ease;
+}
+.pct-bar.warn > span  { background: var(--sms-warning); }
+.pct-bar.danger > span { background: var(--sms-danger); }
+
+/* Calendar mini-grid (reports) */
+.att-calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 3px;
+}
+.att-calendar .day {
+    aspect-ratio: 1;
+    border-radius: 6px;
+    background: var(--sms-bg);
+    display: grid;
+    place-items: center;
+    font-size: .7rem;
+    font-weight: 600;
+    color: var(--sms-text-muted);
+    border: 1px solid var(--sms-border);
+}
+.att-calendar .day.present { background: rgba(16,185,129,.15); color: var(--sms-success); border-color: rgba(16,185,129,.3); }
+.att-calendar .day.absent  { background: rgba(239,68,68,.15);  color: var(--sms-danger);  border-color: rgba(239,68,68,.3); }
+.att-calendar .day.late    { background: rgba(245,158,11,.15); color: #b45309; border-color: rgba(245,158,11,.3); }
+.att-calendar .day.excused { background: rgba(6,182,212,.15);  color: var(--sms-info);    border-color: rgba(6,182,212,.3); }
+
+/* Print-friendly */
+@media print {
+    .sidebar, .topbar, .att-toolbar, .btn, footer { display: none !important; }
+    .main { margin: 0 !important; }
+    .page-content { padding: 0 !important; }
+    .card { box-shadow: none !important; border: 1px solid #ddd !important; }
+}
+/* Small helper for top-attender/absentee rows */
+.min-w-0 { min-width: 0; }

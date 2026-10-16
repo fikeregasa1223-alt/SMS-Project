@@ -1,0 +1,165 @@
+/* ==========================================================================
+   SMS - Students module styles
+   ========================================================================== */
+
+/* Student list grid */
+.student-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+}
+
+.student-card {
+    background: var(--sms-surface);
+    border: 1px solid var(--sms-border);
+    border-radius: var(--sms-radius);
+    padding: 1rem;
+    display: flex;
+    gap: .85rem;
+    align-items: flex-start;
+    transition: all .15s ease;
+}
+.student-card:hover {
+    box-shadow: var(--sms-shadow);
+    transform: translateY(-2px);
+}
+
+.student-card .photo {
+    width: 60px; height: 60px;
+    border-radius: 12px;
+    background: var(--sms-primary-soft);
+    color: var(--sms-primary);
+    display: grid; place-items: center;
+    font-weight: 700;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.student-card .photo img { width: 100%; height: 100%; object-fit: cover; }
+.student-card .info { min-width: 0; flex: 1; }
+.student-card .name { font-weight: 600; margin: 0 0 .15rem; font-size: .9rem; }
+.student-card .meta { font-size: .75rem; color: var(--sms-text-muted); }
+
+/* Profile header */
+.profile-header {
+    background: var(--sms-surface);
+    border: 1px solid var(--sms-border);
+    border-radius: var(--sms-radius);
+    padding: 1.5rem;
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+.profile-header .photo-lg {
+    width: 100px; height: 100px;
+    border-radius: 16px;
+    background: var(--sms-primary-soft);
+    color: var(--sms-primary);
+    display: grid; place-items: center;
+    font-weight: 700;
+    font-size: 2rem;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.profile-header .photo-lg img { width: 100%; height: 100%; object-fit: cover; }
+.profile-header .info { flex: 1; min-width: 220px; }
+.profile-header .info h1 { font-size: 1.4rem; margin: 0 0 .35rem; }
+.profile-header .info .meta {
+    font-size: .8125rem;
+    color: var(--sms-text-muted);
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.profile-header .actions {
+    display: flex;
+    gap: .5rem;
+    flex-wrap: wrap;
+}
+
+/* Tabs */
+.nav-tabs-modern {
+    display: flex;
+    gap: .25rem;
+    border-bottom: 1px solid var(--sms-border);
+    overflow-x: auto;
+    scrollbar-width: thin;
+}
+.nav-tabs-modern::-webkit-scrollbar { height: 4px; }
+.nav-tabs-modern::-webkit-scrollbar-thumb { background: rgba(148,163,184,.3); border-radius: 2px; }
+
+.nav-tabs-modern .tab-link {
+    border: none;
+    background: transparent;
+    padding: .75rem 1rem;
+    font-size: .875rem;
+    font-weight: 600;
+    color: var(--sms-text-soft);
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    transition: all .15s ease;
+}
+.nav-tabs-modern .tab-link:hover {
+    color: var(--sms-primary);
+    text-decoration: none;
+}
+.nav-tabs-modern .tab-link.active {
+    color: var(--sms-primary);
+    border-bottom-color: var(--sms-primary);
+}
+.tab-panel { display: none; }
+.tab-panel.active { display: block; animation: fadeIn .2s ease; }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* Photo preview */
+.photo-preview {
+    width: 120px; height: 120px;
+    border-radius: 14px;
+    background: var(--sms-bg);
+    border: 2px dashed var(--sms-border);
+    display: grid; place-items: center;
+    color: var(--sms-text-muted);
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color .15s ease;
+}
+.photo-preview:hover { border-color: var(--sms-primary); }
+.photo-preview img { width: 100%; height: 100%; object-fit: cover; }
+.photo-preview i { font-size: 2rem; }
+
+/* Guardian chips */
+.guardian-chip {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    padding: .75rem 1rem;
+    border: 1px solid var(--sms-border);
+    border-radius: 10px;
+    background: var(--sms-surface);
+}
+.guardian-chip .role {
+    font-size: .7rem;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: var(--sms-text-muted);
+    font-weight: 700;
+}
+
+/* Info rows on profile */
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: .55rem 0;
+    border-bottom: 1px dashed var(--sms-border);
+    font-size: .875rem;
+}
+.info-row:last-child { border-bottom: 0; }
+.info-row .label { color: var(--sms-text-muted); }
+.info-row .value { font-weight: 600; color: var(--sms-text); text-align: right; }

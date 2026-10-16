@@ -1,0 +1,48 @@
+.tt-grid {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: .8rem;
+    background: var(--sms-surface);
+    border: 1px solid var(--sms-border);
+    border-radius: 8px;
+    overflow: hidden;
+}
+.tt-grid th, .tt-grid td {
+    padding: .5rem .55rem;
+    border-right: 1px solid var(--sms-border);
+    border-bottom: 1px solid var(--sms-border);
+    vertical-align: top;
+    min-width: 90px;
+}
+.tt-grid th {
+    background: #f8fafc;
+    font-size: .7rem;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    color: var(--sms-text-soft);
+    font-weight: 600;
+}
+.tt-grid .tt-period {
+    background: #f8fafc;
+    font-size: .75rem;
+    width: 100px;
+}
+.tt-grid td:last-child, .tt-grid th:last-child { border-right: 0; }
+.tt-grid tr:last-child td { border-bottom: 0; }
+
+.tt-entry {
+    background: var(--sms-primary-soft);
+    border-radius: 6px;
+    padding: .35rem .45rem;
+    position: relative;
+}
+.tt-entry .tt-edit {
+    position: absolute;
+    top: 4px; right: 4px;
+    color: var(--sms-text-muted);
+    font-size: .7rem;
+    opacity: 0;
+    transition: opacity .15s;
+}
+.tt-entry:hover .tt-edit { opacity: 1; }

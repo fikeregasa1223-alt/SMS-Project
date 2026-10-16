@@ -1,0 +1,103 @@
+/* ==========================================================================
+   SMS - Print / PDF styles
+   ========================================================================== */
+
+@media print {
+    .sidebar, .topbar, footer, .btn, .no-print, .page-actions { display: none !important; }
+    .main { margin: 0 !important; }
+    .page-content { padding: 0 !important; }
+    .card { box-shadow: none !important; border: 1px solid #ddd !important; }
+}
+
+.pdf-page {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 32px;
+    background: #fff;
+    color: #0f172a;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-family: 'Inter', system-ui, sans-serif;
+}
+
+.pdf-header {
+    display: grid;
+    grid-template-columns: 90px 1fr 90px;
+    align-items: center;
+    gap: 16px;
+    border-bottom: 2px solid #0f172a;
+    padding-bottom: 16px;
+    margin-bottom: 20px;
+}
+.pdf-header-left, .pdf-header-right { text-align: center; }
+.pdf-header-center { text-align: center; }
+.pdf-header h1 { margin: 0 0 4px; font-size: 1.5rem; }
+.pdf-motto { color: #555; font-size: .85rem; font-style: italic; margin: 0 0 4px; }
+.pdf-contact { color: #555; font-size: .75rem; margin: 0; }
+
+.pdf-title {
+    text-align: center;
+    background: #f1f5f9;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+}
+.pdf-title h2 {
+    margin: 0;
+    font-size: 1rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+.pdf-title p { margin: 4px 0 0; color: #555; font-size: .85rem; }
+
+.pdf-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+}
+.pdf-table th, .pdf-table td {
+    border: 1px solid #cbd5e1;
+    padding: 6px 10px;
+    font-size: .85rem;
+    text-align: left;
+}
+.pdf-table th { background: #f1f5f9; }
+.pdf-table .summary-row td { background: #f8fafc; font-weight: 700; }
+
+.pdf-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 24px;
+    margin-bottom: 16px;
+    font-size: .85rem;
+}
+.pdf-info-grid .row {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px dashed #e5e7eb;
+    padding: 4px 0;
+}
+
+.pdf-signatures {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 60px;
+}
+.pdf-sig {
+    flex: 1;
+    text-align: center;
+    border-top: 1px solid #333;
+    padding-top: 6px;
+    font-size: .8rem;
+}
+.pdf-sig span { color: #333; }
+
+.pdf-footer {
+    text-align: center;
+    font-size: .7rem;
+    color: #777;
+    margin-top: 24px;
+    padding-top: 12px;
+    border-top: 1px solid #e5e7eb;
+}

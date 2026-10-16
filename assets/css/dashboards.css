@@ -1,0 +1,148 @@
+/* ==========================================================================
+   SMS - Role Dashboards
+   ========================================================================== */
+
+/* Hero card */
+.hero-card {
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    color: #fff;
+    border-radius: var(--sms-radius);
+    padding: 1.5rem;
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 1.25rem;
+    position: relative;
+    overflow: hidden;
+}
+.hero-card::after {
+    content: "";
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 220px; height: 220px;
+    background: rgba(255,255,255,.08);
+    border-radius: 50%;
+    pointer-events: none;
+}
+.hero-card .hero-avatar {
+    width: 72px; height: 72px;
+    border-radius: 18px;
+    background: rgba(255,255,255,.15);
+    display: grid; place-items: center;
+    font-weight: 800;
+    font-size: 1.4rem;
+    overflow: hidden;
+    flex-shrink: 0;
+    backdrop-filter: blur(6px);
+}
+.hero-card .hero-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.hero-card h1 { color: #fff; margin: 0 0 .25rem; font-size: 1.4rem; }
+.hero-card .sub { color: rgba(255,255,255,.85); font-size: .875rem; margin: 0; }
+.hero-card .hero-actions { margin-left: auto; display: flex; gap: .5rem; flex-wrap: wrap; }
+.hero-card .hero-actions .btn { background: rgba(255,255,255,.15); color: #fff; border: 1px solid rgba(255,255,255,.25); }
+.hero-card .hero-actions .btn:hover { background: rgba(255,255,255,.25); color: #fff; }
+
+/* Child card (parent dashboard) */
+.child-card {
+    background: var(--sms-surface);
+    border: 1px solid var(--sms-border);
+    border-radius: var(--sms-radius);
+    padding: 1.1rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    transition: box-shadow .15s ease, transform .15s ease;
+}
+.child-card:hover { box-shadow: var(--sms-shadow); transform: translateY(-1px); }
+.child-card .photo {
+    width: 60px; height: 60px;
+    border-radius: 14px;
+    background: var(--sms-primary-soft);
+    color: var(--sms-primary);
+    display: grid; place-items: center;
+    font-weight: 700;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.child-card .photo img { width: 100%; height: 100%; object-fit: cover; }
+.child-card .name { font-weight: 700; margin: 0 0 2px; font-size: .95rem; }
+.child-card .meta { font-size: .78rem; color: var(--sms-text-muted); }
+.child-card .stats { margin-left: auto; display: flex; gap: 1rem; align-items: center; }
+.child-card .mini-stat { text-align: center; }
+.child-card .mini-stat .v { font-weight: 700; font-size: .95rem; }
+.child-card .mini-stat .l { font-size: .7rem; color: var(--sms-text-muted); text-transform: uppercase; letter-spacing: .04em; }
+
+/* Quick action tiles */
+.qa-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: .75rem;
+}
+.qa-tile {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    padding: 1rem;
+    background: var(--sms-surface);
+    border: 1px solid var(--sms-border);
+    border-radius: 10px;
+    color: var(--sms-text);
+    text-decoration: none;
+    transition: all .15s ease;
+}
+.qa-tile:hover { border-color: var(--sms-primary); color: var(--sms-primary); transform: translateY(-1px); }
+.qa-tile .icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    display: grid; place-items: center;
+    background: var(--sms-primary-soft);
+    color: var(--sms-primary);
+    font-size: 1rem;
+}
+.qa-tile .label { font-weight: 600; font-size: .8125rem; }
+.qa-tile .desc { font-size: .72rem; color: var(--sms-text-muted); margin-top: 2px; }
+
+/* Student grade badge */
+.grade-hero {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--sms-surface);
+    border: 1px solid var(--sms-border);
+    border-radius: var(--sms-radius);
+}
+.grade-hero .num {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--sms-primary);
+    line-height: 1;
+}
+
+/* Ring progress */
+.ring {
+    --pct: 0;
+    width: 96px; height: 96px;
+    border-radius: 50%;
+    background: conic-gradient(var(--sms-primary) calc(var(--pct) * 1%), var(--sms-border) 0);
+    display: grid; place-items: center;
+    position: relative;
+    flex-shrink: 0;
+}
+.ring::after {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    border-radius: 50%;
+    background: var(--sms-surface);
+}
+.ring .val {
+    position: relative;
+    z-index: 1;
+    font-weight: 800;
+    font-size: 1.1rem;
+}
+.ring.success { background: conic-gradient(var(--sms-success) calc(var(--pct) * 1%), var(--sms-border) 0); }
+.ring.warn    { background: conic-gradient(var(--sms-warning) calc(var(--pct) * 1%), var(--sms-border) 0); }
+.ring.danger  { background: conic-gradient(var(--sms-danger)  calc(var(--pct) * 1%), var(--sms-border) 0); }

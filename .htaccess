@@ -1,0 +1,81 @@
+# ==========================================================================
+# SMS - Apache Configuration (per-directory)
+# NOTE: <Directory> is NOT allowed in .htaccess — use <FilesMatch> only.
+# ==========================================================================
+
+# Charset
+AddDefaultCharset UTF-8
+
+# Disable directory listing
+Options -Indexes
+
+# ==========================================================================
+# Block direct access to sensitive file extensions
+# ==========================================================================
+<FilesMatch "\.(sql|md|log|ini|bak|swp|env|lock|sh|bat)$">
+    Require all denied
+</FilesMatch>
+
+# Block hidden files (.htaccess, .git, .maintenance, etc.)
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+# ==========================================================================
+# Block access to sensitive directories via URL (using RewriteRule)
+# ==========================================================================
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /SMS/
+
+    # Deny access to config, includes, scripts directories
+    RewriteRule ^(config|includes|scripts|migrations|vendor|logs|backups)/ - [F,L]
+
+    # Block direct execution of PHP inside uploads
+    RewriteRule ^uploads/.*\.php$ - [F,L]
+
+    # Maintenance mode redirect
+    RewriteCond %{REQUEST_URI} !/maintenance\.php
+    RewriteCond %{REQUEST_URI} !/health\.php
+    RewriteCond %{DOCUMENT_ROOT}/SMS/.maintenance -f
+    RewriteRule ^(.*)$ maintenance.php [L]
+</IfModule>
+
+# ==========================================================================
+# Security headers (defense in depth — also set in PHP)
+# ==========================================================================
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+    Header always unset X-Powered-By
+    Header always unset Server
+</IfModule>
+
+# ==========================================================================
+# Custom error pages
+# ==========================================================================
+ErrorDocument 403 /SMS/error.php?code=403
+ErrorDocument 404 /SMS/error.php?code=404
+ErrorDocument 500 /SMS/error.php?code=500
+
+# ==========================================================================
+# Compression
+# ==========================================================================
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
+    AddOutputFilterByType DEFLATE application/javascript application/json application/xml
+</IfModule>
+
+# ==========================================================================
+# Cache static assets
+# ==========================================================================
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpeg  "access plus 1 month"
+    ExpiresByType image/png   "access plus 1 month"
+    ExpiresByType image/webp  "access plus 1 month"
+    ExpiresByType text/css    "access plus 1 week"
+    ExpiresByType application/javascript "access plus 1 week"
+</IfModule>

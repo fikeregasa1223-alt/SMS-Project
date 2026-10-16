@@ -1,0 +1,176 @@
+/* ==========================================================================
+   SMS - Examinations module styles
+   ========================================================================== */
+
+/* Exam status chip bar */
+.exam-progress {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    padding: .75rem 1rem;
+    border-radius: 10px;
+    background: var(--sms-primary-soft);
+    color: var(--sms-primary-700);
+    font-size: .85rem;
+    font-weight: 600;
+}
+
+/* Marks entry grid */
+.marks-grid {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: .875rem;
+    background: var(--sms-surface);
+    border: 1px solid var(--sms-border);
+    border-radius: var(--sms-radius);
+    overflow: hidden;
+}
+.marks-grid thead th {
+    background: #f8fafc;
+    padding: .75rem .85rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: .75rem;
+    color: var(--sms-text-soft);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    border-bottom: 1px solid var(--sms-border);
+}
+[data-theme="dark"] .marks-grid thead th { background: #0f172a; }
+
+.marks-grid tbody td {
+    padding: .65rem .85rem;
+    border-bottom: 1px solid var(--sms-border);
+    vertical-align: middle;
+}
+.marks-grid tbody tr:last-child td { border-bottom: 0; }
+.marks-grid tbody tr:hover { background: rgba(79,70,229,.03); }
+
+.marks-grid .student-cell {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+}
+
+.marks-input {
+    width: 90px;
+    padding: .35rem .55rem;
+    border-radius: 6px;
+    border: 1px solid var(--sms-border);
+    font-size: .875rem;
+    text-align: right;
+    font-weight: 600;
+    transition: all .15s ease;
+}
+.marks-input:focus {
+    border-color: var(--sms-primary);
+    box-shadow: 0 0 0 .15rem rgba(79,70,229,.15);
+    outline: none;
+}
+.marks-input.is-absent { background: rgba(239,68,68,.05); border-color: rgba(239,68,68,.3); }
+
+.marks-max {
+    font-size: .75rem;
+    color: var(--sms-text-muted);
+    margin-left: .35rem;
+}
+
+.marks-pct {
+    font-weight: 700;
+    color: var(--sms-text);
+}
+
+/* Absent checkbox */
+.absent-check {
+    width: 20px; height: 20px;
+    cursor: pointer;
+}
+
+/* Report card */
+.report-card {
+    max-width: 800px;
+    margin: 20px auto;
+    background: #fff;
+    padding: 32px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    color: #0f172a;
+}
+.report-card .rc-header {
+    text-align: center;
+    border-bottom: 2px solid #0f172a;
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+}
+.report-card .rc-header h1 { margin: 0 0 4px; font-size: 1.4rem; }
+.report-card .rc-header .sub { font-size: .85rem; color: #555; }
+.report-card .rc-title {
+    text-align: center;
+    background: #f1f5f9;
+    padding: 8px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    font-size: .85rem;
+    border-radius: 6px;
+    margin: 16px 0;
+}
+.report-card table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+}
+.report-card th, .report-card td {
+    border: 1px solid #cbd5e1;
+    padding: 6px 10px;
+    font-size: .85rem;
+}
+.report-card th {
+    background: #f1f5f9;
+    text-align: left;
+}
+.report-card .summary-row td { font-weight: 700; background: #f8fafc; }
+.report-card .signatures {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 60px;
+    gap: 20px;
+}
+.report-card .signatures > div {
+    flex: 1;
+    border-top: 1px solid #333;
+    padding-top: 6px;
+    text-align: center;
+    font-size: .8rem;
+    color: #333;
+}
+.report-card .remarks {
+    margin-top: 16px;
+    padding: 10px;
+    background: #f8fafc;
+    border-left: 3px solid #4f46e5;
+    font-size: .85rem;
+    border-radius: 4px;
+}
+.report-card .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 24px;
+    font-size: .85rem;
+    margin-bottom: 12px;
+}
+.report-card .info-grid .row {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px dashed #e5e7eb;
+    padding: 4px 0;
+}
+
+@media print {
+    body { background: #fff; }
+    .sidebar, .topbar, footer, .no-print { display: none !important; }
+    .main { margin: 0 !important; }
+    .page-content { padding: 0 !important; }
+    .report-card { border: 0; margin: 0; padding: 0; }
+}

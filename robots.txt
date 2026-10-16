@@ -1,0 +1,15 @@
+# SMS - School Management System
+# Do not index any administrative content.
+
+User-agent: *
+Disallow: /SMS/
+Disallow: /SMS/admin/
+Disallow: /SMS/auth/
+Disallow: /SMS/teacher/
+Disallow: /SMS/student/
+Disallow: /SMS/parent/
+Disallow: /SMS/config/
+Disallow: /SMS/includes/
+Disallow: /SMS/uploads/
+
+Allow: /SMS/assets/
